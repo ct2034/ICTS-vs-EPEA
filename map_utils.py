@@ -1,5 +1,6 @@
 from pathlib import Path
 
+
 class MapDetails(object):
     def __init__(self, result_file_name, map_name, map_instance, starting_locations, goal_locations):
         self.result_file_name = result_file_name
@@ -8,14 +9,17 @@ class MapDetails(object):
         self.starting_loc = starting_locations
         self.goal_loc = goal_locations
 
+
 def print_mapf_instance(my_map, starts, goals):
     print('Start locations')
     print_locations(my_map, starts)
     print('Goal locations')
     print_locations(my_map, goals)
 
+
 def print_locations(my_map, locations):
-    starts_map = [[-1 for _ in range(len(my_map[0]))] for _ in range(len(my_map))]
+    starts_map = [[-1 for _ in range(len(my_map[0]))]
+                  for _ in range(len(my_map))]
     for i in range(len(locations)):
         starts_map[locations[i][0]][locations[i][1]] = i
     to_print = ''
@@ -29,6 +33,7 @@ def print_locations(my_map, locations):
                 to_print += '. '
         to_print += '\n'
     print(to_print)
+
 
 def import_mapf_instance(filename):
     f = Path(filename)
@@ -63,6 +68,7 @@ def import_mapf_instance(filename):
         goals.append((gx, gy))
     f.close()
     return my_map, starts, goals
+
 
 def find_number_of_open_spaces(map):
     number_of_open_spaces = 0
